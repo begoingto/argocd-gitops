@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-dep
+  namespace: argocd-spring
 spec:
   replicas: 3
   selector:
@@ -32,6 +33,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spring-svc
+  namespace: argocd-spring
 spec:
   type: ClusterIP
   selector:
@@ -47,6 +49,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: spring-ingress
+  namespace: argocd-spring
   annotations:
     kubernetes.io/ingressClassName: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt"

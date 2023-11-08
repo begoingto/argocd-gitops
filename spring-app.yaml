@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: 69966/springgradleimage:1.1.1
+          image: 69966/springgradleimg:1.1.1
           ports:
             - containerPort: 8080
           volumeMounts:

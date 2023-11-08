@@ -15,17 +15,17 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: 69966/springgradleimg:1.1.1
+          image: 69966/reactjsimage:latest
           ports:
-            - containerPort: 8080
-          volumeMounts:
-            - name: spring-vol
-              mountPath: /app/src/main/resources/images
-      volumes:
-        - name: spring-vol
-          nfs:
-            server: 10.148.0.19
-            path: /opt/nfs/data
+            - containerPort: 80
+      #     volumeMounts:
+      #       - name: spring-vol
+      #         mountPath: /app/src/main/resources/images
+      # volumes:
+      #   - name: spring-vol
+      #     nfs:
+      #       server: 10.148.0.19
+      #       path: /opt/nfs/data
 
 ---
 # Path: spring-svc.yaml
@@ -40,8 +40,8 @@ spec:
     app: spring-app
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
 
 ---
 # Path: spring-ingress.yaml
@@ -68,4 +68,4 @@ spec:
           service:
             name: spring-svc
             port:
-              number: 8080
+              number: 80
